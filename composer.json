@@ -1,0 +1,10 @@
+{
+  "name" : "color",
+  "require" : {
+    "zendframework/zendframework" : "2.4.12"
+  },
+  "repositories" : [ {
+    "type" : "composer",
+    "url" : "https://packagist.org/"
+  } ]
+}

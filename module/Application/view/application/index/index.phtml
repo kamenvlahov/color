@@ -1,0 +1,50 @@
+
+
+<form class="form-inline" method="Post" action="">
+  <div class="form-group">
+    <input type="text"  name="key_word" class="form-control"  placeholder="Search for names..">
+  </div>
+ <div class="form-group">
+  <select class="form-control" id="myInput" onChange="MyFilter(this.value)" name="color">
+  <option class="selected">All</option>
+  <option >red</option>
+  <option >green</option>
+  <option >blue</option>
+  <option >yellow</option>
+  <option >black</option>
+</select>
+ </div>
+<div class="form-group">
+<input class="form-control btn btn-default" type="submit" value="Search">
+ </div>
+  </form>
+<div class="row" id="search">
+ <div class="container">
+    <div class="col-md-4"> First name</div>
+    <div class="col-md-4"> Last name</div>
+    <div class="col-md-4 item"> Favorite color</div>
+  </div>
+  <?php if (count($data)):?>
+  <div class="data">
+  <?php foreach ($data as $colorData):?>
+  <div class="container <?php echo $colorData['color']?>">
+    <div class="col-md-4"> <?php echo $colorData['first_name']?></div>
+    <div class="col-md-4"> <?php echo $colorData['last_name']?></div>
+    <div class="col-md-4 color"> <?php echo $colorData['color']?></div>
+  </div>
+  <?php endforeach;?>
+  </div>
+  <?php else:?>
+  <?php endif;?>
+</div>
+<script>
+function MyFilter(filter){
+	$( ".data" ).children().show();
+	if(filter!='All'){
+		$( ".data" ).children().not('.' +filter).hide();
+	}
+}
+$(".color").click(function(){
+	$(this).parent().css('background-color', $(this).text());
+});
+</script>
